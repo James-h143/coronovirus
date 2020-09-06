@@ -53,8 +53,8 @@ function percIncrease(a, b) {
 
 async function getScreenData(data) {
   console.log(JSON.stringify(data));
-  //   data[0].cases = 2500;
-  //   data[1].cases = 2600;
+  data[0].cases = 1000;
+  data[1].cases = 2000;
   let percIncDec = percIncrease(data[0].cases, data[1].cases);
   let percRounded = percIncDec.toFixed(2);
 

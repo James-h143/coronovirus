@@ -44,13 +44,19 @@ async function getScreenData(data) {
   return { color, line1, line2 };
 }
 
-function setScreen() {
-  //
+function setScreen(obj) {
+  lcd.backlight(obj.color);
+  lcd.message(obj.line1 + "\n" + obj.line2);
+  lcd.on("button_change", function (button) {
+    lcd.clear();
+    lcd.message("Button changed:\n" + lcd.buttonName(button));
+  });
 }
 
 async function main() {
   let latestData = await getData();
   let screenData = await getScreenData(latestData[dataType]);
+  await setScreen(screenData);
   console.log(latestData);
 }
 

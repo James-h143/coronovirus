@@ -32,17 +32,20 @@ async function getData() {
 }
 
 async function getScreenData(data) {
-  let line1 = data[0].name;
-  let line2 = "Cases: " + data[0].cases + "  ^";
   let percIncDec = ((data[0].cases - data[1].cases) / data[0].cases) * 100.0;
+  let percRounded = Math.round((percIncDec + Number.EPSILON) * 100) / 100;
+
   let color;
-  if (percIncDec <= 0) {
+  if (percRounded <= 0) {
     color = lcd.colors.GREEN;
-  } else if (percIncDec <= 10) {
+  } else if (percRounded <= 10) {
     color = lcd.colors.YELLOW;
   } else {
     color = lcd.colors.RED;
   }
+
+  let line1 = data[0].name;
+  let line2 = "Cases: " + data[0].cases + "  ↓" + percRounded + "%";
 
   return { color, line1, line2 };
 }

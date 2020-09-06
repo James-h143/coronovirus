@@ -55,7 +55,7 @@ async function getScreenData(data) {
   data[0].cases = 2500;
   data[1].cases = 2501;
   let percIncDec = percIncrease(data[0].cases, data[1].cases);
-  let percRounded = Math.round(percIncDec * 100) / 100;
+  let percRounded = percIncDec.toFixed(2);
 
   let char;
   if (data[0].cases >= data[1].cases) {

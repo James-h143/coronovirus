@@ -3,9 +3,9 @@ const lcd = new LCDPLATE(1, 0x20);
 const fetch = require("node-fetch");
 
 lcd.createChar(1, [0, 4, 14, 14, 14, 0, 0]);
-const charUp = 1;
+const charUp = "\x01";
 lcd.createChar(2, [0, 0, 14, 14, 14, 4, 0]);
-const charDown = 2;
+const charDown = "\x02";
 
 // lcd.backlight(lcd.colors.RED);
 // lcd.message("M'stone");
@@ -42,16 +42,22 @@ async function getScreenData(data) {
   let percRounded = Math.round(percIncDec * 100) / 100;
 
   let color;
+  let char;
   if (percRounded <= 0) {
     color = lcd.colors.GREEN;
+    char = charUp;
   } else if (percRounded <= 10) {
     color = lcd.colors.YELLOW;
+    char = charDown;
   } else {
     color = lcd.colors.RED;
+    char = charDown;
   }
 
-  let line1 = data[0].name;
-  let line2 = "Cases: " + data[0].cases + "  \x02" + percRounded + "%";
+  // if(percRounded)
+
+  let line1 = data[0].name + " " + char + percRounded + "%";
+  let line2 = "Cases: " + data[0].cases;
 
   return { color, line1, line2 };
 }

@@ -11,7 +11,9 @@ const fetch = require("node-fetch");
 // });
 let dataType = "national";
 
-let screenData = [{ color: "GREEN", line1: "fetching data", line2: "" }];
+let screenData = [
+  { color: lcd.colors.GREEN, line1: "fetching data", line2: "" },
+];
 
 async function getData() {
   const national = await fetch(
@@ -54,10 +56,11 @@ function setScreen(obj) {
 }
 
 async function main() {
-  let latestData = await getData();
-  let screenData = await getScreenData(latestData[dataType]);
   await setScreen(screenData);
-  console.log(latestData);
+  let latestData = await getData();
+  screenData = await getScreenData(latestData[dataType]);
+  await setScreen(screenData);
+  //   console.log(latestData);
 }
 
 main().catch(console.log);

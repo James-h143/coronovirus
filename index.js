@@ -56,7 +56,7 @@ async function getScreenData(data) {
   data[0].cases = 1000;
   data[1].cases = 2000;
   let percIncDec = percIncrease(data[0].cases, data[1].cases);
-  let percRounded = percIncDec.toFixed(2);
+  let percRounded = (percIncDec * 1).toFixed(2);
 
   let char;
   if (data[0].cases >= data[1].cases) {
@@ -67,9 +67,9 @@ async function getScreenData(data) {
 
   let color;
 
-  if (percIncDec <= 0) {
+  if (percIncDec >= 0) {
     color = lcd.colors.GREEN;
-  } else if (percIncDec <= 10) {
+  } else if (percIncDec >= -10) {
     color = lcd.colors.YELLOW;
   } else {
     color = lcd.colors.RED;

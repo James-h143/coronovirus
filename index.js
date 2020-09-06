@@ -99,13 +99,20 @@ async function main(dataType) {
   //   console.log(latestData);
 }
 
+let lastButtonClick = new Date().getTime();
+
 lcd.on("button_change", function (button) {
   //this is shit, do better
-  console.log("hello");
-  if (currentSelected === dataTypes.NATIONAL) {
-    main(dataTypes.REGIONAL);
-  } else {
-    main(dataTypes.NATIONAL);
+  let thisButtonClick = new Date().getTime();
+
+  if (thisButtonClick - lastButtonClick > 500) {
+    lastButtonClick = thisButtonClick;
+    console.log("hello");
+    if (currentSelected === dataTypes.NATIONAL) {
+      main(dataTypes.REGIONAL);
+    } else {
+      main(dataTypes.NATIONAL);
+    }
   }
 });
 

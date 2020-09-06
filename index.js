@@ -9,7 +9,10 @@ const fetch = require("node-fetch");
 //   lcd.clear();
 //   lcd.message("Button changed:\n" + lcd.buttonName(button));
 // });
-let dataType = "national";
+let dataTypes = {
+  NATIONAL: "national",
+  REGIONAL: "regional",
+};
 
 let screenData = { color: lcd.colors.GREEN, line1: "fetching data", line2: "" };
 
@@ -30,7 +33,7 @@ async function getData() {
 
 async function getScreenData(data) {
   let line1 = data[0].name;
-  let line2 = "Cases: " + data[0].cases;
+  let line2 = "Cases: " + data[0].cases + "  ^";
   let percIncDec = ((data[0].cases - data[1].cases) / data[0].cases) * 100.0;
   let color;
   if (percIncDec <= 0) {
@@ -48,10 +51,6 @@ function setScreen(obj) {
   lcd.clear();
   lcd.backlight(obj.color);
   lcd.message(obj.line1 + "\n" + obj.line2);
-  lcd.on("button_change", function (button) {
-    lcd.clear();
-    lcd.message("Button changed:\n" + lcd.buttonName(button));
-  });
 }
 
 async function main() {
@@ -59,6 +58,9 @@ async function main() {
   let latestData = await getData();
   screenData = await getScreenData(latestData[dataType]);
   await setScreen(screenData);
+  lcd.on("button_change", function (button) {
+    // if(dat)
+  });
   //   console.log(latestData);
 }
 

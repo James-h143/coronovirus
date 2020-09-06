@@ -101,6 +101,7 @@ async function main(dataType) {
 
 lcd.on("button_change", function (button) {
   //this is shit, do better
+  console.log("hello");
   if (currentSelected === dataTypes.NATIONAL) {
     main(dataTypes.REGIONAL);
   } else {

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/James-h143/coronovirus#readme",
   "dependencies": {
-    "adafruit-i2c-lcd": "^2.0.0"
+    "adafruit-i2c-lcd": "^2.0.0",
+    "node-fetch": "^2.6.1"
   }
 }

@@ -42,17 +42,21 @@ async function getScreenData(data) {
   let percIncDec = ((data[0].cases - data[1].cases) / data[0].cases) * 100.0;
   let percRounded = Math.round(percIncDec * 100) / 100;
 
-  let color;
   let char;
-  if (percIncDec <= 0) {
-    color = lcd.colors.GREEN;
-    char = charDown;
-  } else if (percIncDec <= 10) {
-    color = lcd.colors.YELLOW;
+  if (data[0].cases >= data[1].cases) {
     char = charUp;
   } else {
+    char = charDown;
+  }
+
+  let color;
+
+  if (percIncDec <= 0) {
+    color = lcd.colors.GREEN;
+  } else if (percIncDec <= 10) {
+    color = lcd.colors.YELLOW;
+  } else {
     color = lcd.colors.RED;
-    char = charUp;
   }
 
   // if(percRounded)

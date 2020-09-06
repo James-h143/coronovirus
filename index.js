@@ -2,7 +2,7 @@ const LCDPLATE = require("adafruit-i2c-lcd").plate;
 const lcd = new LCDPLATE(1, 0x20);
 
 lcd.backlight(lcd.colors.RED);
-lcd.message("Hello World!");
+lcd.message("M'stone");
 
 lcd.on("button_change", function (button) {
   lcd.clear();

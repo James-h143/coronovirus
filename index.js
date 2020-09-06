@@ -18,6 +18,7 @@ let dataTypes = {
   NATIONAL: "national",
   REGIONAL: "regional",
 };
+let currentSelected = "national";
 
 let screenData = { color: lcd.colors.GREEN, line1: "fetching data", line2: "" };
 
@@ -98,7 +99,12 @@ async function main(dataType) {
 }
 
 lcd.on("button_change", function (button) {
-  // if(dat)
+  //this is shit, do better
+  if (currentSelected === dataTypes.NATIONAL) {
+    main(dataTypes.REGIONAL);
+  } else {
+    main(dataTypes.NATIONAL);
+  }
 });
 
 main(dataTypes.NATIONAL).catch(console.log);

@@ -1,8 +1,10 @@
+require('fs').unlinkSync('out.log')
+
 const diseaseName = 'SARS-COVID-19'
 const infectionRate = 14.285714285714285 //%chance of infecting another person per day
 const earthPopulation = 9000000000
 const dateOfFirstCase = new Date('12/01/2019');
-const chanceOfDeath = 2 //per cent value
+const chanceOfDeath = 0.14 //per cent value per day
 const averageLengthOfInfection = 14 //in days
 
 class InfectedPerson{
@@ -61,14 +63,18 @@ function dieOrNot(i){
     } 
 }
 function report(){
-    console.log('');
-    console.log('Disease name: '+diseaseName);
-    console.log('Current date: '+currentDate);
-    console.log('Total number of people infected: '+ totalInfected.length);
-    console.log('current number of people infected:' + currentlyInfected.length);
-    console.log('Total recovered: '+recovered.length);
-    console.log('total casualties: '+dead.length);
-    console.log('')
+    
+    let output = ""+
+    '\nDisease name: '+diseaseName+
+    '\nCurrent date: '+currentDate+
+    '\nTotal number of people infected: '+ totalInfected.length+
+    '\ncurrent number of people infected:' + currentlyInfected.length+
+    '\nTotal recovered: '+recovered.length+
+    '\ntotal casualties: '+dead.length+
+    '\n'
+    require('fs').appendFileSync('out.log',output,'utf-8');
+    console.clear();
+    console.log(output)
 }
 
 while(totalInfected.length < earthPopulation){

@@ -1,0 +1,22 @@
+{
+  "name": "corona",
+  "version": "1.0.0",
+  "description": "",
+  "main": "spread.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/James-h143/coronovirus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/James-h143/coronovirus/issues"
+  },
+  "homepage": "https://github.com/James-h143/coronovirus#readme",
+  "dependencies": {
+    "adafruit-i2c-lcd": "^2.0.0"
+  }
+}

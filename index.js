@@ -45,13 +45,13 @@ async function getScreenData(data) {
   let char;
   if (percRounded <= 0) {
     color = lcd.colors.GREEN;
-    char = charUp;
+    char = charDown;
   } else if (percRounded <= 10) {
     color = lcd.colors.YELLOW;
-    char = charDown;
+    char = charUp;
   } else {
     color = lcd.colors.RED;
-    char = charDown;
+    char = charUp;
   }
 
   // if(percRounded)

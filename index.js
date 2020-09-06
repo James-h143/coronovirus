@@ -90,6 +90,7 @@ function setScreen(obj) {
 }
 
 async function main(dataType) {
+  currentSelected = dataType;
   await setScreen(screenData);
   let latestData = await getData();
   screenData = await getScreenData(latestData[dataType]);

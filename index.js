@@ -115,7 +115,7 @@ lcd.on("button_change", function (button) {
     }
   }
 });
-
+main(dataTypes.NATIONAL).catch(console.log);
 setInterval(function () {
   main(dataTypes.NATIONAL).catch(console.log);
 }, 3600000);

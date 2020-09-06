@@ -53,15 +53,17 @@ function setScreen(obj) {
   lcd.message(obj.line1 + "\n" + obj.line2);
 }
 
-async function main() {
+async function main(dataType) {
   await setScreen(screenData);
   let latestData = await getData();
   screenData = await getScreenData(latestData[dataType]);
   await setScreen(screenData);
-  lcd.on("button_change", function (button) {
-    // if(dat)
-  });
+
   //   console.log(latestData);
 }
 
-main().catch(console.log);
+lcd.on("button_change", function (button) {
+  // if(dat)
+});
+
+main(dataTypes.REGIONAL).catch(console.log);

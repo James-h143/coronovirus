@@ -118,5 +118,5 @@ lcd.on("button_change", function (button) {
 
 setInterval(function () {
   main(dataTypes.NATIONAL).catch(console.log);
-}, 10000);
+}, 3600000);
 // while (true) {}

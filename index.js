@@ -53,7 +53,7 @@ function percIncrease(a, b) {
 }
 
 async function getScreenData(data) {
-  console.log(JSON.stringify(data));
+  //   console.log(JSON.stringify(data));
   //   data[0].cases = 100;
   //   data[1].cases = 98;
   let percIncDec = percIncrease(data[0].cases, data[1].cases);
@@ -116,4 +116,7 @@ lcd.on("button_change", function (button) {
   }
 });
 
-main(dataTypes.NATIONAL).catch(console.log);
+setInterval(function () {
+  main(dataTypes.NATIONAL).catch(console.log);
+}, 10000);
+// while (true) {}

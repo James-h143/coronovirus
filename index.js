@@ -11,9 +11,7 @@ const fetch = require("node-fetch");
 // });
 let dataType = "national";
 
-let screenData = [
-  { color: lcd.colors.GREEN, line1: "fetching data", line2: "" },
-];
+let screenData = { color: lcd.colors.GREEN, line1: "fetching data", line2: "" };
 
 async function getData() {
   const national = await fetch(
@@ -47,6 +45,7 @@ async function getScreenData(data) {
 }
 
 function setScreen(obj) {
+  lcd.clear();
   lcd.backlight(obj.color);
   lcd.message(obj.line1 + "\n" + obj.line2);
   lcd.on("button_change", function (button) {

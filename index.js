@@ -23,6 +23,7 @@ let currentSelected = "national";
 let screenData = { color: lcd.colors.GREEN, line1: "fetching data", line2: "" };
 
 async function getData() {
+  setScreen({ color: lcd.colors.GREEN, line1: "fetching data", line2: "" });
   const national = await fetch(
     "https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=england&structure={%22name%22:%22areaName%22,%22cases%22:%22newCasesByPublishDate%22,%22date%22:%22date%22,%22admissions%22:%22newAdmissions%22}"
   );
@@ -91,7 +92,6 @@ function setScreen(obj) {
 
 async function main(dataType) {
   currentSelected = dataType;
-  await setScreen(screenData);
   let latestData = await getData();
   screenData = await getScreenData(latestData[dataType]);
   await setScreen(screenData);

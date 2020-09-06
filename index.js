@@ -33,7 +33,7 @@ async function getData() {
 
 async function getScreenData(data) {
   let percIncDec = ((data[0].cases - data[1].cases) / data[0].cases) * 100.0;
-  let percRounded = Math.round((percIncDec + Number.EPSILON) * 100) / 100;
+  let percRounded = Math.round(percIncDec * 100) / 100;
 
   let color;
   if (percRounded <= 0) {

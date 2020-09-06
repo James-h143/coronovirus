@@ -70,4 +70,4 @@ lcd.on("button_change", function (button) {
   // if(dat)
 });
 
-main(dataTypes.REGIONAL).catch(console.log);
+main(dataTypes.NATIONAL).catch(console.log);

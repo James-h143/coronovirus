@@ -2,6 +2,11 @@ const LCDPLATE = require("adafruit-i2c-lcd").plate;
 const lcd = new LCDPLATE(1, 0x20);
 const fetch = require("node-fetch");
 
+lcd.createChar(1, [0, 4, 14, 14, 14, 0, 0]);
+const charUp = 1;
+lcd.createChar(2, [0, 0, 14, 14, 14, 4, 0]);
+const charDown = 2;
+
 // lcd.backlight(lcd.colors.RED);
 // lcd.message("M'stone");
 
@@ -46,7 +51,7 @@ async function getScreenData(data) {
   }
 
   let line1 = data[0].name;
-  let line2 = "Cases: " + data[0].cases + "  ⌄" + percRounded + "%";
+  let line2 = "Cases: " + data[0].cases + "  \x01" + percRounded + "%";
 
   return { color, line1, line2 };
 }

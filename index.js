@@ -51,7 +51,7 @@ async function getScreenData(data) {
   }
 
   let line1 = data[0].name;
-  let line2 = "Cases: " + data[0].cases + "  \x01" + percRounded + "%";
+  let line2 = "Cases: " + data[0].cases + "  \x02" + percRounded + "%";
 
   return { color, line1, line2 };
 }

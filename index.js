@@ -49,7 +49,7 @@ function percIncrease(a, b) {
   } else {
     percent = -a * 100;
   }
-  return Math.floor(percent);
+  return percent;
 }
 
 async function getScreenData(data) {
